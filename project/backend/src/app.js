@@ -45,6 +45,12 @@ if (!env.isTest) {
 
 app.use('/api', apiLimiter);
 
+// 1. Root Route (Fixes Render's GET / 404 health check)
+app.get('/', (_req, res) => {
+  res.status(200).json({ success: true, message: 'WizJobAI API is running successfully.' });
+});
+
+// 2. Health Check Route
 app.get('/api/health', (_req, res) => {
   res.status(200).json({ success: true, message: 'WizJobAI API is healthy.', env: env.NODE_ENV });
 });

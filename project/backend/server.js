@@ -10,8 +10,8 @@ process.on('uncaughtException', (err) => {
 const start = async () => {
   await connectDB();
 
-  const server = app.listen(env.PORT, () => {
-    console.log(`[server] WizJobAI API running on port ${env.PORT} in ${env.NODE_ENV} mode`);
+  const server = app.listen(env.PORT || 5003, () => {
+    console.log(`[server] WizJobAI API running on port ${env.PORT || 5003} in ${env.NODE_ENV || 'development'} mode`);
   });
 
   process.on('unhandledRejection', (err) => {
