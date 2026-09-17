@@ -47,7 +47,7 @@ export default function GetStartedPage() {
             <Button className="text-brand-700 hover:bg-brand-50">Explore jobs</Button>
           </Link>
         </div>
-      </div>
+      </div>    
 
       <OnboardingChecklist
         onboardingStep={user?.onboardingStep}

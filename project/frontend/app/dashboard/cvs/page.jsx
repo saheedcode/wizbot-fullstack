@@ -89,7 +89,7 @@ export default function ManageCvsPage() {
       </DashboardShell>
     );
   }
-
+   
   const setField = (field) => (e) => setCv((c) => ({ ...c, [field]: e.target.value }));
 
   const updateEntry = (listKey, id, field, value) => {
