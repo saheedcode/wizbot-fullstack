@@ -7,6 +7,7 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
+
 const start = async () => {
   await connectDB();
 

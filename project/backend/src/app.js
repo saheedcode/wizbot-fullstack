@@ -23,9 +23,24 @@ const app = express();
 app.set('trust proxy', 1);
 
 app.use(helmet());
+
+// Define allowed origins for local development and your Vercel deployment
+const allowedOrigins = [
+  'http://localhost:3000',
+  env.CLIENT_URL
+].filter(Boolean); // Removes undefined values if CLIENT_URL isn't set yet
+
 app.use(
   cors({
-    origin: env.CLIENT_URL,
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman, mobile apps, or curl)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) === -1) {
+        return callback(new Error('Not allowed by CORS policy'));
+      }
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
