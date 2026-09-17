@@ -27,7 +27,7 @@ app.use(helmet());
 // Define allowed origins for local development and your Vercel deployment
 const allowedOrigins = [
   'http://localhost:3000',
-  env.CLIENT_URL
+  process.env.VERCEL_CLIENT_URL
 ].filter(Boolean); // Removes undefined values if CLIENT_URL isn't set yet
 
 app.use(
